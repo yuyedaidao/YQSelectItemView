@@ -15,6 +15,10 @@
 		219025D51ED3E8E300868168 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 219025D31ED3E8E300868168 /* LaunchScreen.storyboard */; };
 		219025E01ED3E8E300868168 /* YQSelectItemViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 219025DF1ED3E8E300868168 /* YQSelectItemViewTests.m */; };
 		219025EB1ED3E8E300868168 /* YQSelectItemViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 219025EA1ED3E8E300868168 /* YQSelectItemViewUITests.m */; };
+		219025FB1ED3E93800868168 /* YQSelectItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 219025FA1ED3E93800868168 /* YQSelectItemView.m */; };
+		219025FD1ED3E97F00868168 /* YQSelectItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 219025FC1ED3E97F00868168 /* YQSelectItemView.xib */; };
+		219026011ED41A4B00868168 /* YQSelectItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 219025FF1ED41A4B00868168 /* YQSelectItemCell.m */; };
+		219026021ED41A4B00868168 /* YQSelectItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 219026001ED41A4B00868168 /* YQSelectItemCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,12 @@
 		219025E61ED3E8E300868168 /* YQSelectItemViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YQSelectItemViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		219025EA1ED3E8E300868168 /* YQSelectItemViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQSelectItemViewUITests.m; sourceTree = "<group>"; };
 		219025EC1ED3E8E300868168 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		219025F91ED3E93800868168 /* YQSelectItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQSelectItemView.h; sourceTree = "<group>"; };
+		219025FA1ED3E93800868168 /* YQSelectItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQSelectItemView.m; sourceTree = "<group>"; };
+		219025FC1ED3E97F00868168 /* YQSelectItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQSelectItemView.xib; sourceTree = "<group>"; };
+		219025FE1ED41A4B00868168 /* YQSelectItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQSelectItemCell.h; sourceTree = "<group>"; };
+		219025FF1ED41A4B00868168 /* YQSelectItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQSelectItemCell.m; sourceTree = "<group>"; };
+		219026001ED41A4B00868168 /* YQSelectItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQSelectItemCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +91,7 @@
 		219025B91ED3E8E200868168 = {
 			isa = PBXGroup;
 			children = (
+				219025F81ED3E90200868168 /* Classes */,
 				219025C41ED3E8E300868168 /* YQSelectItemView */,
 				219025DE1ED3E8E300868168 /* YQSelectItemViewTests */,
 				219025E91ED3E8E300868168 /* YQSelectItemViewUITests */,
@@ -138,6 +149,19 @@
 				219025EC1ED3E8E300868168 /* Info.plist */,
 			);
 			path = YQSelectItemViewUITests;
+			sourceTree = "<group>";
+		};
+		219025F81ED3E90200868168 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				219025F91ED3E93800868168 /* YQSelectItemView.h */,
+				219025FA1ED3E93800868168 /* YQSelectItemView.m */,
+				219025FC1ED3E97F00868168 /* YQSelectItemView.xib */,
+				219025FE1ED41A4B00868168 /* YQSelectItemCell.h */,
+				219025FF1ED41A4B00868168 /* YQSelectItemCell.m */,
+				219026001ED41A4B00868168 /* YQSelectItemCell.xib */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,7 +273,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				219026021ED41A4B00868168 /* YQSelectItemCell.xib in Resources */,
 				219025D51ED3E8E300868168 /* LaunchScreen.storyboard in Resources */,
+				219025FD1ED3E97F00868168 /* YQSelectItemView.xib in Resources */,
 				219025D21ED3E8E300868168 /* Assets.xcassets in Resources */,
 				219025D01ED3E8E300868168 /* Main.storyboard in Resources */,
 			);
@@ -276,7 +302,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				219026011ED41A4B00868168 /* YQSelectItemCell.m in Sources */,
 				219025CD1ED3E8E300868168 /* ViewController.m in Sources */,
+				219025FB1ED3E93800868168 /* YQSelectItemView.m in Sources */,
 				219025CA1ED3E8E300868168 /* AppDelegate.m in Sources */,
 				219025C71ED3E8E300868168 /* main.m in Sources */,
 			);
@@ -431,6 +459,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = GP4MMMES25;
 				INFOPLIST_FILE = YQSelectItemView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.iqilu..YQSelectItemView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -443,6 +472,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = GP4MMMES25;
 				INFOPLIST_FILE = YQSelectItemView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.iqilu..YQSelectItemView;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="YQSelectItemView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UZ5-Zy-Dwb">
+                    <rect key="frame" x="37.5" y="133.5" width="300" height="400"/>
+                    <subviews>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="6pN-h3-ACu">
+                            <rect key="frame" x="15" y="10" width="270" height="322"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="nrl-71-qWi">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fep-GC-fNH">
+                            <rect key="frame" x="14.5" y="342" width="270" height="32"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="32" id="aol-Nj-UDH"/>
+                            </constraints>
+                            <state key="normal" title="确定" backgroundImage="yq_select_bg">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected" title="确定" backgroundImage="yq_select_bg"/>
+                            <state key="highlighted" title="确定" backgroundImage="yq_select_bg">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="doneAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="xqv-a7-Pvc"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="6pN-h3-ACu" firstAttribute="top" secondItem="UZ5-Zy-Dwb" secondAttribute="top" constant="10" id="1dp-Ic-rZc"/>
+                        <constraint firstItem="Fep-GC-fNH" firstAttribute="width" secondItem="6pN-h3-ACu" secondAttribute="width" id="58b-Pw-y2w"/>
+                        <constraint firstAttribute="bottom" secondItem="Fep-GC-fNH" secondAttribute="bottom" constant="26" id="CGr-Kj-m4v"/>
+                        <constraint firstAttribute="trailing" secondItem="6pN-h3-ACu" secondAttribute="trailing" constant="15" id="V4r-cv-vdV"/>
+                        <constraint firstAttribute="width" constant="300" id="Zi1-is-4V5"/>
+                        <constraint firstAttribute="height" constant="400" id="cba-ZU-ESP"/>
+                        <constraint firstItem="6pN-h3-ACu" firstAttribute="leading" secondItem="UZ5-Zy-Dwb" secondAttribute="leading" constant="15" id="fgi-6x-sT8"/>
+                        <constraint firstItem="Fep-GC-fNH" firstAttribute="centerX" secondItem="6pN-h3-ACu" secondAttribute="centerX" id="iD5-ry-RhM"/>
+                        <constraint firstItem="Fep-GC-fNH" firstAttribute="top" secondItem="6pN-h3-ACu" secondAttribute="bottom" constant="10" id="mb6-al-FEV"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="UZ5-Zy-Dwb" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="TcX-FB-rFY"/>
+                <constraint firstItem="UZ5-Zy-Dwb" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="pEP-uA-87q"/>
+            </constraints>
+            <connections>
+                <outlet property="bottomConstraint" destination="mb6-al-FEV" id="NW2-h4-wYc"/>
+                <outlet property="collectionView" destination="6pN-h3-ACu" id="hi4-rG-4ea"/>
+                <outlet property="contentView" destination="UZ5-Zy-Dwb" id="ZE1-6k-mMG"/>
+                <outlet property="heightConstraint" destination="cba-ZU-ESP" id="SDk-sa-P1r"/>
+                <outlet property="layout" destination="nrl-71-qWi" id="0ik-PO-zKO"/>
+                <outlet property="leadingConstraint" destination="fgi-6x-sT8" id="Sfy-dk-Bjr"/>
+                <outlet property="topConstraint" destination="1dp-Ic-rZc" id="PYZ-tv-y0s"/>
+                <outlet property="trailingConstraint" destination="V4r-cv-vdV" id="f6O-kO-sEV"/>
+                <outlet property="widthConstraint" destination="Zi1-is-4V5" id="YO3-kG-HgT"/>
+            </connections>
+            <point key="canvasLocation" x="21.5" y="136.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="yq_select_bg" width="17" height="14"/>
+    </resources>
+</document>
