@@ -47,7 +47,6 @@
                     </view>
                 </subviews>
             </view>
-            <color key="backgroundColor" red="0.9529411793" green="0.68627452850000004" blue="0.13333334029999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="efD-z4-WhY" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Ny2-PU-AN5"/>
                 <constraint firstItem="efD-z4-WhY" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="apl-Ml-G3d"/>
