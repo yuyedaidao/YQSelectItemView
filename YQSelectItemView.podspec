@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "YQSelectItemView"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "弹出选择"
 
   # This description is used to generate tags and improve search results.
@@ -78,7 +78,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "http://EXAMPLE/YQSelectItemView.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/yuyedaidao/YQSelectItemView.git", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -104,7 +104,7 @@ Pod::Spec.new do |s|
   #
 
   # s.resource  = "icon.png"
-  s.resources = "Classes/*.xib","*.xcassets"
+  s.resources = "Classes/*.xib","YQSelectItemView/*.xcassets"
 
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
