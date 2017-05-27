@@ -19,9 +19,10 @@
     self.titleLabel.text = title;
 }
 
-- (void)setSelected:(BOOL)selected {
-    [super setSelected:selected];
-    self.flagImgView.highlighted = selected;
+
+- (void)setItemSelected:(BOOL)itemSelected {
+    _itemSelected = itemSelected;
+    self.flagImgView.image = [UIImage imageNamed:itemSelected ? @"ticks_b" : @"ticks_a"];
 }
 
 @end

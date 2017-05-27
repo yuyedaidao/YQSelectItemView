@@ -33,6 +33,8 @@
         NSLog(@"item isSelected: %ld", item.isSelected);
     }];
     
+    [view setSelectedIndexs:@[@(2), @(3)]];
+    
 }
 
 

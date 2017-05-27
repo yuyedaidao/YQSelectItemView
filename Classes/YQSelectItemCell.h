@@ -11,12 +11,13 @@
 @protocol YQSelectItemProtocol <NSObject>
 
 - (void)setTitle:(NSString *)title;
+@property (assign, nonatomic) BOOL itemSelected;
 
 @end
 
 @interface YQSelectItemCell : UICollectionViewCell <YQSelectItemProtocol>
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *flagImgView;
-
+@property (assign, nonatomic) BOOL itemSelected;
 
 @end

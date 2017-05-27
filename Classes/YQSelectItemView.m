@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *layout;
+@property (strong, nonatomic) NSMutableSet *selSet;
 
 @end
 
@@ -48,10 +49,10 @@
 }
 
 - (IBAction)doneAction:(id)sender {
-    if ([self.delegate respondsToSelector:@selector(selectItemViewDone:)]) {
-        [self.delegate selectItemViewDone:self];
+    if ([self.delegate respondsToSelector:@selector(selectItemViewDone:selectedIndexs:)]) {
+        [self.delegate selectItemViewDone:self selectedIndexs:_selSet ? _selSet.allObjects : nil];
     } else {
-        !self.doneBlock? : self.doneBlock();
+        !self.doneBlock? : self.doneBlock(_selSet ? _selSet.allObjects : nil);
     }
 }
 
@@ -71,6 +72,7 @@
     _heightMultiplier = 0.6;
     _itemHeight = 50.0f;
     _column = 2;
+    _selSet = [NSMutableSet set];
 }
 
 - (void)awakeFromNib {
@@ -81,7 +83,7 @@
     self.layout.minimumInteritemSpacing = 10;
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
-    _collectionView.allowsMultipleSelection = YES;
+    _collectionView.allowsMultipleSelection = NO;
     
 }
 
@@ -122,6 +124,7 @@
 }
 
 - (void)reloadData {
+    [self.selSet addObjectsFromArray:self.selectedIndexs];
     [self.collectionView reloadData];
 }
 
@@ -143,23 +146,40 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"yq_select_item" forIndexPath:indexPath];
     NSAssert([cell conformsToProtocol:@protocol(YQSelectItemProtocol)], @"YQSelecteItemView注册的UICollectionViewCell需要实现 YQSelectItemProtocol");
-    [(id<YQSelectItemProtocol>)cell setTitle:self.titleArray[indexPath.item]];
+    id<YQSelectItemProtocol> item = (id<YQSelectItemProtocol>)cell;
+    [item setTitle:self.titleArray[indexPath.item]];
+    item.itemSelected  = [_selSet containsObject:@(indexPath.item)];
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self.delegate respondsToSelector:@selector(selectItemView:didSelectItem:atIndex:)]) {
-        [self.delegate selectItemView:self didSelectItem:[collectionView cellForItemAtIndexPath:indexPath] atIndex:indexPath.item];
+    id<YQSelectItemProtocol> item = (id<YQSelectItemProtocol>)[collectionView cellForItemAtIndexPath:indexPath];
+   
+    if ([_selSet containsObject:@(indexPath.item)]) {
+        [_selSet removeObject:@(indexPath.item)];
+        if ([self.delegate respondsToSelector:@selector(selectItemView:didDeselectItem:atIndex:)]) {
+            [self.delegate selectItemView:self didDeselectItem:[collectionView cellForItemAtIndexPath:indexPath] atIndex:indexPath.item];
+        } else {
+            !self.didDeselectItemBlock? : self.didDeselectItemBlock([collectionView cellForItemAtIndexPath:indexPath], indexPath.item);
+        }
+        
+        item.itemSelected = NO;
     } else {
-        !self.didSelectItemBlock? : self.didSelectItemBlock([collectionView cellForItemAtIndexPath:indexPath], indexPath.item);
-    }
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self.delegate respondsToSelector:@selector(selectItemView:didDeselectItem:atIndex:)]) {
-        [self.delegate selectItemView:self didDeselectItem:[collectionView cellForItemAtIndexPath:indexPath] atIndex:indexPath.item];
-    } else {
-        !self.didDeselectItemBlock? : self.didDeselectItemBlock([collectionView cellForItemAtIndexPath:indexPath], indexPath.item);
+        BOOL shouldSelect = YES;
+        if ([self.delegate respondsToSelector:@selector(selectItemView:shouldSelectedItemAtIndex:)]) {
+            shouldSelect = [self.delegate selectItemView:self shouldSelectedItemAtIndex:indexPath.item];
+        } else {
+            shouldSelect = self.shouldSelectedItemBlock? self.shouldSelectedItemBlock(indexPath.item) : YES;
+        }
+        if (shouldSelect) {
+            [_selSet addObject:@(indexPath.item)];
+            if ([self.delegate respondsToSelector:@selector(selectItemView:didSelectItem:atIndex:)]) {
+                [self.delegate selectItemView:self didSelectItem:[collectionView cellForItemAtIndexPath:indexPath] atIndex:indexPath.item];
+            } else {
+                !self.didSelectItemBlock? : self.didSelectItemBlock([collectionView cellForItemAtIndexPath:indexPath], indexPath.item);
+            }
+        }
+        item.itemSelected = YES;
     }
 }
 

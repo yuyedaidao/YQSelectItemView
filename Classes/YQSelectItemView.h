@@ -15,7 +15,11 @@
 @optional
 - (void)selectItemView:(YQSelectItemView *)view didSelectItem:(__kindof UICollectionViewCell *)item atIndex:(NSInteger)index;
 - (void)selectItemView:(YQSelectItemView *)view didDeselectItem:(__kindof UICollectionViewCell *)item atIndex:(NSInteger)index;
-- (void)selectItemViewDone:(YQSelectItemView *)view;
+- (void)selectItemViewDone:(YQSelectItemView *)view selectedIndexs:(NSArray<NSNumber *> *)indexs;
+@optional
+
+- (BOOL)selectItemView:(YQSelectItemView *)view shouldSelectedItemAtIndex:(NSInteger)index;
+
 @end
 
 @interface YQSelectItemView : UIView
@@ -32,10 +36,13 @@
 @property (assign, nonatomic) NSInteger column;
 @property (assign, nonatomic) CGFloat itemHeight;
 @property (strong, nonatomic) NSArray *titleArray;
+@property (strong, nonatomic) NSArray<NSNumber *> *selectedIndexs;
 @property (assign, nonatomic) UIEdgeInsets contentInsets;
 @property (copy, nonatomic) void (^didSelectItemBlock)(__kindof UICollectionViewCell *item, NSInteger index);
 @property (copy, nonatomic) void (^didDeselectItemBlock)(__kindof UICollectionViewCell *item, NSInteger index);
-@property (copy, nonatomic) void (^doneBlock)(void);
+@property (copy, nonatomic) BOOL (^shouldSelectedItemBlock)(NSInteger index);
+@property (copy, nonatomic) void (^doneBlock)(NSArray<NSNumber *> *indexs);
+
 - (void)registerNib:(UINib *)nib;
 - (void)registerClass:(Class)aClass;
 

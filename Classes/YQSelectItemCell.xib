@@ -27,7 +27,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ticks_a" highlightedImage="ticks_b" translatesAutoresizingMaskIntoConstraints="NO" id="0rG-FV-Zh0">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ticks_a" translatesAutoresizingMaskIntoConstraints="NO" id="0rG-FV-Zh0">
                                 <rect key="frame" x="56.5" y="0.0" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="Jjj-XK-KtI"/>
@@ -61,6 +61,5 @@
     </objects>
     <resources>
         <image name="ticks_a" width="20" height="20"/>
-        <image name="ticks_b" width="20" height="20"/>
     </resources>
 </document>
