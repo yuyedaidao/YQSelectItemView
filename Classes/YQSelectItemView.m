@@ -8,7 +8,7 @@
 
 #import "YQSelectItemView.h"
 
-@interface YQSelectItemView ()<UICollectionViewDelegate, UICollectionViewDataSource>
+@interface YQSelectItemView ()<UICollectionViewDelegate, UICollectionViewDataSource, UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthConstraint;
@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *layout;
 @property (strong, nonatomic) NSMutableSet *selSet;
+@property (strong, nonatomic) UITapGestureRecognizer *tapGesture;
 
 @end
 
@@ -73,6 +74,10 @@
     _itemHeight = 50.0f;
     _column = 2;
     _selSet = [NSMutableSet set];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHandlerAction:)];
+    tap.delegate = self;
+    [self addGestureRecognizer:tap];
+    self.tapGesture = tap;
 }
 
 - (void)awakeFromNib {
@@ -136,6 +141,17 @@
     self.layout.itemSize = CGSizeMake((_widthConstraint.constant - self.contentInsets.left - self.contentInsets.right) / _column - (self.layout.minimumInteritemSpacing * (_column - 1)), _itemHeight);
 }
 
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    if (gestureRecognizer == self.tapGesture) {
+        return !CGRectContainsPoint(self.contentView.frame, [touch locationInView:self]);
+    }
+    return YES;
+}
+
+- (void)tapHandlerAction:(UITapGestureRecognizer *)sender {
+    if (CGRectContainsPoint(self.contentView.frame, [sender locationInView:sender.view])) return;
+    [self hide];
+}
 
 #pragma mark collection
 

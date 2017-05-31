@@ -37,6 +37,11 @@
     
 }
 
+- (IBAction)show:(id)sender {
+    if (!self.itemView.superview) {
+        [self.itemView show];
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
